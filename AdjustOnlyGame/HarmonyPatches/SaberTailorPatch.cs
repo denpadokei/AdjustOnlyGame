@@ -1,10 +1,7 @@
 ﻿using HarmonyLib;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 using UnityEngine.SceneManagement;
 
 namespace AdjustOnlyGame.HarmonyPatches
@@ -17,9 +14,9 @@ namespace AdjustOnlyGame.HarmonyPatches
         [HarmonyTargetMethods]
         public static IEnumerable<MethodBase> TargetMethods()
         {
-            yield return AccessTools.Method(Type.GetType("SaberTailor.HarmonyPatches.DevicelessVRHelperAdjustControllerTransform"), "Prefix");
-            yield return AccessTools.Method(Type.GetType("SaberTailor.HarmonyPatches.OculusVRHelperAdjustControllerTransform"), "Prefix");
-            yield return AccessTools.Method(Type.GetType("SaberTailor.HarmonyPatches.OpenVRHelperAdjustControllerTransform"), "Prefix");
+            yield return AccessTools.Method(Type.GetType("SaberTailor.HarmonyPatches.DevicelessVRHelperAdjustControllerTransform, SaberTailor"), "Prefix");
+            yield return AccessTools.Method(Type.GetType("SaberTailor.HarmonyPatches.OculusVRHelperAdjustControllerTransform, SaberTailor"), "Prefix");
+            yield return AccessTools.Method(Type.GetType("SaberTailor.HarmonyPatches.OpenVRHelperAdjustControllerTransform, SaberTailor"), "Prefix");
         }
 
         [HarmonyPrefix]

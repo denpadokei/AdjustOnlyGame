@@ -1,14 +1,7 @@
 ﻿using HarmonyLib;
 using IPA;
-using IPA.Config;
-using IPA.Config.Stores;
 using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
 using System.Reflection;
-using System.Threading.Tasks;
-using UnityEngine;
 using IPALogger = IPA.Logging.Logger;
 
 namespace AdjustOnlyGame
@@ -24,7 +17,7 @@ namespace AdjustOnlyGame
         internal static Plugin Instance { get; private set; }
         internal static IPALogger Log { get; private set; }
         private static Harmony s_harmony;
-        
+
 
         [Init]
         /// <summary>
@@ -90,19 +83,17 @@ namespace AdjustOnlyGame
 
         // Uncomment the methods in this section if using Harmony
         #region Harmony
-        
+
         /// <summary>
         /// Attempts to apply all the Harmony patches in this assembly.
         /// </summary>
         internal static void ApplyHarmonyPatches()
         {
-            try
-            {
+            try {
                 Plugin.Log?.Debug("Applying Harmony patches.");
                 s_harmony = Harmony.CreateAndPatchAll(Assembly.GetExecutingAssembly());
             }
-            catch (Exception ex)
-            {
+            catch (Exception ex) {
                 Plugin.Log?.Error("Error applying Harmony patches: " + ex.Message);
                 Plugin.Log?.Debug(ex);
             }
@@ -113,18 +104,16 @@ namespace AdjustOnlyGame
         /// </summary>
         internal static void RemoveHarmonyPatches()
         {
-            try
-            {
+            try {
                 // Removes all patches with this HarmonyId
                 s_harmony.UnpatchSelf();
             }
-            catch (Exception ex)
-            {
+            catch (Exception ex) {
                 Plugin.Log?.Error("Error removing Harmony patches: " + ex.Message);
                 Plugin.Log?.Debug(ex);
             }
         }
-        
+
         #endregion
     }
 }
